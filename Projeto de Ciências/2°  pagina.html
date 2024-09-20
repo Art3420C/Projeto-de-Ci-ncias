@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Poluição da Água</title>
+    <link rel="icon" type="image/x-icon" href="logo.jpg">
+    <style>
+        /* Estilo geral do corpo da página */
+        body {
+            font-family: Arial, sans-serif; /* Define a fonte para o corpo */
+            margin: 0; /* Remove a margem padrão */
+            padding: 0; /* Remove o preenchimento padrão */
+            background-color: #063b01; /* Cor de fundo clara para a página */
+        }
+        /* Estilo do container principal */
+        .container {
+            width: 80%; /* Define a largura do container principal */
+            max-width: 1200px; /* Define a largura máxima do container */
+            margin: 20px auto; /* Centraliza o container horizontalmente com margens */
+            padding: 20px; /* Preenchimento interno do container */
+            background-color: #ffffff; /* Cor de fundo branca para o container */
+            border-radius: 8px; /* Bordas arredondadas com raio de 8 pixels */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra leve ao redor do container */
+        }
+        h1 {
+            text-align: center; /* Alinha o título ao centro */
+            color: #00796b; /* Cor verde-azulado para o título */
+        }
+        /* Estilo dos elementos de formulário */
+        .form-group {
+            margin-bottom: 15px; /* Margem inferior para cada grupo de formulário */
+        }
+        label {
+            display: block; /* Exibe o rótulo como um bloco */
+            margin-bottom: 5px; /* Margem inferior para o rótulo */
+            font-weight: bold; /* Define o texto do rótulo como negrito */
+        }
+        input[type="number"], input[type="text"], button {
+            width: 100%; /* Largura total do campo de entrada e botão */
+            padding: 10px; /* Preenchimento interno dos campos */
+            font-size: 16px; /* Tamanho da fonte */
+            border-radius: 4px; /* Bordas arredondadas com raio de 4 pixels */
+            border: 1px solid #ccc; /* Borda cinza clara */
+            box-sizing: border-box; /* Inclui bordas e preenchimento no tamanho total */
+        }
+        button {
+            background-color: #00796b; /* Cor de fundo verde-azulado para o botão */
+            color: #ffffff; /* Cor do texto do botão */
+            cursor: pointer; /* Muda o cursor para uma mão ao passar sobre o botão */
+        }
+        button:hover {
+            background-color: #004d40; /* Cor de fundo verde-escuro ao passar o mouse */
+        }
+        /* Estilo do gráfico */
+        .chart-container {
+            position: relative; /* Define a posição relativa para o gráfico */
+            height: 400px; /* Altura do gráfico */
+            width: 100%; /* Largura total do gráfico */
+            margin-top: 20px; /* Margem superior para o gráfico */
+        }
+    </style>
+</head>
+<body style="background-image: url('amazonia.jpg');">
+    <div class="container">
+        <h1>Controle de Poluição da Água Na Vigorelli</h1>
+        <div>
+            <!-- Campos para entrada de dados -->
+            <div class="form-group">
+                <label for="temperatura">Temperatura da Água (°C):</label>
+                <input type="number" id="temperatura" placeholder="Digite a temperatura da água">
+            </div>
+            <div>
+                <div class="form-group">
+                    <label for="temperatura">Temperatura do Ar (°C):</label>
+                    <input type="number" id="temperaturaar" placeholder="Digite a temperatura da água">
+                </div>
+            <div class="form-group">
+                <label for="oxigenio">Oxigênio dissolvido (mg/L):</label>
+                <input type="number" id="oxigenio" placeholder="Digite a quantidade de oxigênio">
+            </div>
+            <div class="form-group">
+                <label for="ph">Nível de pH:</label>
+                <input type="number"  id="ph" placeholder="Digite o nível de pH">
+            </div>
+            <div class="form-group">
+                <label for="turbidez">Turbidez (NTU):</label>
+                <input type="number" id="turbidez" placeholder="Digite o nível de turbidez">
+            </div>
+
+            <div class="form-group">
+                <label for="poluentes">Poluentes:</label>
+                <input type="number" id="poluentes" placeholder="Digite a quantidade de poluentes">
+            </div>
+            <div class="form-group">
+                <label for="amonia">Amônia (mg/L):</label>
+                <input type="number" step="0.01" id="amonia" placeholder="Digite o nível de amônia">
+            </div>
+            <div class="form-group">
+                <label for="nitrito">Nitrito (mg/L):</label>
+                <input type="number" step="0.01" id="nitrito" placeholder="Digite o nível de nitrito">
+            </div>
+            <div class="form-group">
+                <label for="nitrato">Nitrato (mg/L):</label>
+                <input type="number" step="0.01" id="nitrato" placeholder="Digite o nível de nitrato">
+            </div>
+            <div class="form-group">
+                <label for="nitrogenio">Nitrogênio Total (mg/L):</label>
+                <input type="number" id="nitrogenio" placeholder="Digite o nível de nitrogênio total">
+            </div>
+            <div class="form-group">
+                <label for="ortofosfato">Ortofósfato (mg/L):</label>
+                <input type="number" id="ortofosfato" placeholder="Digite o nível de ortofósfato">
+            </div>
+            <div class="form-group">
+                <label for="oleos">Óleos (mg/L):</label>
+                <input type="number" id="oleos" placeholder="Digite o nível de óleos">
+            </div>
+            <div class="form-group">
+                <label for="corantes">Corantes (mg/L):</label>
+                <input type="number" id="corantes" placeholder="Digite o nível de corantes">
+            </div>
+            <div class="form-group">
+                <label for="cheiro">Cheiro:</label>
+                <input type="text" id="cheiro" placeholder="Descreva o cheiro">
+            </div>
+            <div class="form-group">
+                <label for="espuma">Espuma (sim/não):</label>
+                <input type="text" id="espuma" placeholder="Espuma presente? (sim/não)">
+            </div>
+            <div class="form-group">
+                <label for="corpos">Corpos Estranhos:</label>
+                <input type="text" id="corpos" placeholder="Descreva os corpos estranhos">
+            </div>
+            <div class="form-group">
+                <label for="algas">Algas (sim/não):</label>
+                <input type="text" id="algas" placeholder="Algas presentes? (sim/não)">
+            </div>
+            <div class="form-group">
+                <label for="plantas">Plantas Aquáticas (sim/não):</label>
+                <input type="text" id="plantas" placeholder="Plantas aquáticas presentes? (sim/não)">
+            </div>
+            <div class="form-group">
+                <label for="cobertura">Cobertura Vegetal (m²):</label>
+                <input type="number" id="cobertura" placeholder="Digite a cobertura vegetal em m²">
+            </div>
+            <div class="form-group">
+                <label for="material">Material Sedimentado (g/L):</label>
+                <input type="number" id="material" placeholder="Digite o material sedimentado">
+            </div>
+            <div class="form-group">
+                <label for="peixes">Peixes (quantidade):</label>
+                <input type="number" id="peixes" placeholder="Digite a quantidade de peixes">
+            </div>
+            <div class="form-group">
+                <label for="outros">Outros Parâmetros:</label>
+                <input type="text" id="outros" placeholder="Descreva outros parâmetros">
+            </div>
+            <button onclick="gerarRelatorio()">Gerar Relatório</button>
+        </div>
+        <div class="chart-container">
+            <!-- Canvas para gráficos -->
+            <canvas id="graficoPoluicao"></canvas>
+        </div>
+        <div id="relatorio"></div>
+    </div>
+
+    <!-- Inclui a biblioteca Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Função para gerar o relatório e atualizar o gráfico
+        function gerarRelatorio() {
+            // Obtém os valores dos campos de entrada
+            const dados = {
+                temperatura: parseFloat(document.getElementById('temperatura').value),
+                temperaturaar: parseFloat(document.getElementById('temperaturaar').value),
+                oxigenio: parseFloat(document.getElementById('oxigenio').value),
+                ph: parseFloat(document.getElementById('ph').value),
+                turbidez: parseFloat(document.getElementById('turbidez').value),
+                poluentes: parseFloat(document.getElementById('poluentes').value),
+                amonia: parseFloat(document.getElementById('amonia').value),
+                nitrito: parseFloat(document.getElementById('nitrito').value),
+                nitrato: parseFloat(document.getElementById('nitrato').value),
+                nitrogenio: parseFloat(document.getElementById('nitrogenio').value),
+                ortofosfato: parseFloat(document.getElementById('ortofosfato').value),
+                oleos: parseFloat(document.getElementById('oleos').value),
+                corantes: parseFloat(document.getElementById('corantes').value),
+                cobertura: parseFloat(document.getElementById('cobertura').value),
+                material: parseFloat(document.getElementById('material').value),
+                peixes: parseFloat(document.getElementById('peixes').value),
+
+            };
+            const relatorio = document.getElementById('relatorio');
+
+            // Verifica se os valores são válidos
+            if (Object.values(dados).some(value => isNaN(value) && value !== '' && value !== 0)) {
+                relatorio.innerHTML = "<p style='color: red;'>Por favor, insira valores válidos para todos os campos.</p>";
+                return;
+            }
+
+            // Gera o texto do relatório com base nos valores inseridos
+            let mensagem = "";
+
+            // Verifica e gera alertas com base nos valores
+            if (dados.temperatura > 30) mensagem += "<p>Alerta: A temperatura da água está alta.</p>";
+            if (dados.temperaturaar > 30) mensagem += "<p>Alerta: A temperatura do Ar está alta.</p>";
+            if (dados.poluentes > 50) mensagem += "<p>Alerta: A quantidade de poluentes está acima do limite recomendado.</p>";
+            if (dados.ph < 6.5 || dados.ph > 8.5) mensagem += "<p>Alerta: O nível de pH está fora da faixa ideal para a água.</p>";
+            if (dados.turbidez > 5) mensagem += "<p>Alerta: A turbidez está acima do limite recomendado.</p>";
+            if (dados.oxigenio < 5) mensagem += "<p>Alerta: O nível de oxigênio dissolvido está abaixo do ideal.</p>";
+            if (dados.amonia > 0.5) mensagem += "<p>Alerta: O nível de amônia está alto.</p>";
+            if (dados.nitrito > 0.1) mensagem += "<p>Alerta: O nível de nitrito está alto.</p>";
+            if (dados.nitrato > 10) mensagem += "<p>Alerta: O nível de nitrato está alto.</p>";
+            if (dados.nitrogenio > 1) mensagem += "<p>Alerta: O nível de nitrogênio total está alto.</p>";
+            if (dados.ortofosfato > 0.5) mensagem += "<p>Alerta: O nível de ortofósfato está alto.</p>";
+            if (dados.oleos > 5) mensagem += "<p>Alerta: O nível de óleos está alto.</p>";
+            if (dados.corantes > 0.5) mensagem += "<p>Alerta: O nível de corantes está alto.</p>";
+            if (dados.cheiro) mensagem += "<p>Cheiro detectado: " + dados.cheiro + "</p>";
+            if (dados.espuma) mensagem += "<p>Alerta: Espuma detectada.</p>";
+            if (dados.corpos) mensagem += "<p>Corpos estranhos encontrados: " + dados.corpos + "</p>";
+            if (dados.algas) mensagem += "<p>Alerta: Algas detectadas.</p>";
+            if (dados.plantas) mensagem += "<p>Alerta: Plantas aquáticas detectadas.</p>";
+            if (dados.cobertura > 0) mensagem += "<p>Área de cobertura vegetal: " + dados.cobertura + " m²</p>";
+            if (dados.material > 0) mensagem += "<p>Material sedimentado: " + dados.material + " g/L</p>";
+            if (dados.peixes > 0) mensagem += "<p>Quantidade de peixes: " + dados.peixes + "</p>";
+            if (dados.outros) mensagem += "<p>Outros parâmetros: " + dados.outros + "</p>";
+
+            relatorio.innerHTML = mensagem;
+
+            // Atualiza o gráfico com os dados inseridos
+            atualizarGrafico(dados);
+        }
+
+        // Função para atualizar o gráfico
+        function atualizarGrafico(dados) {
+            const ctx = document.getElementById('graficoPoluicao').getContext('2d');
+
+            // Cria ou atualiza o gráfico
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        'Temperatura','Temperatura Ar', 'Poluentes', 'pH', 'Turbidez', 'Oxigênio Dissolvido',
+                        'Amônia', 'Nitrito', 'Nitrato', 'Nitrogênio Total', 'Ortofósfato', 'Óleos',
+                        'Corantes', 'Cobertura Vegetal', 'Material Sedimentado', 'Peixes'
+                    ],
+                    datasets: [{
+                        label: 'Dados de Poluição da Água',
+                        data: [
+                            dados.temperatura,dados.temperaturaar, dados.poluentes, dados.ph, dados.turbidez, dados.oxigenio,
+                         dados.amonia, dados.nitrito, dados.nitrato, dados.nitrogenio,
+                            dados.ortofosfato, dados.oleos, dados.corantes, dados.cobertura, dados.material,
+                            dados.peixes
+                        ],
+                        backgroundColor: 'rgba(0, 121, 107, 0.2)', /* Cor de fundo com opacidade */
+                        borderColor: 'rgba(0, 121, 107, 1)', /* Cor da borda */
+                        borderWidth: 1 /* Largura da borda */
+                    }]
+                },
+                options: {
+                    responsive: true, /* Torna o gráfico responsivo */
+                    scales: {
+                        y: {
+                            beginAtZero: true /* Começa o eixo y do zero */
+                        }
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+</html>
